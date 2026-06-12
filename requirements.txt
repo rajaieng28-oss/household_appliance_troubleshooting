@@ -1,9 +1,11 @@
+# Commented packages are system related issues on python 3.13, instead use 3.11
 langchain
 langgraph
 langchain-community
 langchain-core
 langchain-huggingface
 langchain-chroma
+# langchain-text-splitters
 
 chromadb
 
@@ -21,4 +23,9 @@ transformers
 
 huggingface_hub
 
+# --extra-index-url https://download.pytorch.org/whl/cpu
 torch
+# torchvision
+# torchaudio
+
+# unstructured

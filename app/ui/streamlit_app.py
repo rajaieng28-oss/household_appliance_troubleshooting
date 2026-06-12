@@ -1,5 +1,17 @@
+# Commented lines are system related issues on python 3.13, instead use 3.11
+
 import sys
 import os
+# os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"  # Fix for potential OpenMP issues on some platforms
+# os.environ["OMP_NUM_THREADS"] = "1"  # Limit OpenMP to 1 thread to avoid conflicts
+
+# # Add DLL search path for Windows (if needed)
+# if sys.platform == "win32":
+#     import pathlib
+#     venv_path = pathlib.Path(sys.executable).parent.parent
+#     dll_path = venv_path / "Lib" / "site-packages" / "torch" / "lib"
+#     if dll_path.exists():
+#         os.add_dll_directory(str(dll_path))
 import time
 import streamlit as st
 
