@@ -41,8 +41,6 @@ def ingest():
     print("💾 Adding to vector DB...")
     vectorstore.add_documents(chunks)
 
-    vectorstore.persist()
-
     print("✅ Ingestion complete!")
 
 

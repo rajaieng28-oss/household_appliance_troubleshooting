@@ -6,7 +6,7 @@ import os
 LOG_PATH = "logs/execution.json"
 
 
-def run_monitoring(state):
+def monitoring_agent(state):
 
     start_time = state.get("start_time", time.time())
     latency = round(time.time() - start_time, 2)
@@ -17,7 +17,7 @@ def run_monitoring(state):
         "latency_seconds": latency,
         "execution_path": state.get("execution_path", []),
         "sources": state.get("sources", []),
-        "need_tool": state.get("need_tool", False),
+        "need_retrieval": state.get("need_retrieval", False),
         "status": "success" if not state.get("error") else "failed"
     }
 
@@ -34,6 +34,7 @@ def run_monitoring(state):
     with open(LOG_PATH, "w") as f:
         json.dump(data, f, indent=2)
 
+    state["latency"] = latency
     state["monitoring"] = log_entry
     state["execution_path"].append("monitoring")
 

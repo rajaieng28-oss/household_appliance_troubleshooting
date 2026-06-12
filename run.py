@@ -11,7 +11,6 @@ import argparse
 import time
 
 from app.workflows.graph import ApplianceGraph
-from app.agents.monitoring_agent import MonitoringAgent
 
 # Load environment variables
 from dotenv import load_dotenv
@@ -19,7 +18,6 @@ load_dotenv()
 
 # --- Initialize Global Objects ---
 graph = ApplianceGraph()          # LangGraph workflow
-monitoring_agent = MonitoringAgent()  # Observability agent
 
 def run_cli(query: str):
     """
@@ -27,29 +25,29 @@ def run_cli(query: str):
     """
     state = {
         "query": query,
+        "category": "",
         "retrieved_docs": [],
+        "sources": [],
         "diagnosis": "",
+        "root_cause": "",
+        "safety_status": "",
+        "risk_level": "",
+        "safety_flags": [],
         "tool_results": {},
         "resolution": "",
         "response": "",
-        "execution_path": [],
-        "monitoring": {},
-        "need_tool": False,
-        "route": "",
-        "error": "",
-        "rewritten_query": query,
-        "sources": [],
-        "category": "",
+        "need_retrieval": False,
+        "need_safety_check": False,
         "retry_count": 0,
-        "start_time": time.time()
+        "start_time": time.time(),
+        "latency": 0.0,
+        "error": "",
+        "execution_path": []
     }
 
     try:
         # Invoke the workflow graph
         final_state = graph.invoke(state)
-        
-        # Logging & observability
-        monitoring_agent.log(final_state)
 
         # Print final formatted response
         print("\n=== Appliance Monitoring Response ===\n")

@@ -15,7 +15,7 @@ Keep response structured and clear.
 """
 
 
-def run_response(state):
+def response_agent(state):
 
     response = invoke(
         prompt=f"""

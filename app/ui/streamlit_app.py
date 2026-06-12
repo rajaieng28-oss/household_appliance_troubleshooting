@@ -1,5 +1,6 @@
 import sys
 import os
+import time
 import streamlit as st
 
 # ─────────────────────────────────────────────
@@ -89,15 +90,17 @@ if st.button("🚀 Diagnose Issue"):
         "root_cause": "",
         "safety_status": "",
         "risk_level": "",
+        "safety_flags": [],
         "tool_results": {},
         "resolution": "",
         "response": "",
-        "need_retrieval": True,
-        "need_safety_check": True,
+        "need_retrieval": False,
+        "need_safety_check": False,
         "retry_count": 0,
-        "start_time": 0.0,
+        "start_time": time.time(),
         "latency": 0.0,
-        "error": ""
+        "error": "",
+        "execution_path": []
     }
 
     # ─────────────────────────────────────────

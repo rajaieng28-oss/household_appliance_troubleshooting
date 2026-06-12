@@ -18,7 +18,7 @@ ACTION: ...
 """
 
 
-def run_safety(state):
+def safety_agent(state):
 
     context = "\n".join(state.get("retrieved_docs", []))
 

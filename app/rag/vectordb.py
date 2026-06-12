@@ -1,7 +1,7 @@
 import os
 from langchain_community.vectorstores import Chroma
 
-VECTOR_DB_PATH = "vector_db"
+VECTOR_DB_PATH = "chroma_db"
 
 
 def get_vectorstore(embeddings):

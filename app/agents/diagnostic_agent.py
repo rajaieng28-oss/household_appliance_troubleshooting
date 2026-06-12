@@ -16,7 +16,7 @@ EXPLANATION: ...
 """
 
 
-def run_diagnostic(state):
+def diagnostic_agent(state):
 
     context = "\n".join(state.get("retrieved_docs", []))
 
@@ -28,5 +28,10 @@ def run_diagnostic(state):
 
     state["diagnosis"] = response
     state["execution_path"].append("diagnostic")
+
+    if "SEVERITY: High" in response or "SEVERITY: Medium" in response:
+        state["need_safety_check"] = True
+    else:
+        state["need_safety_check"] = False
 
     return state

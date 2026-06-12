@@ -59,5 +59,11 @@ def build_graph():
 
     return builder.compile()
 
+class ApplianceGraph:
+    def __init__(self):
+        self.graph = build_graph()
+
+    def invoke(self, state: ApplianceState):
+        return self.graph.invoke(state)
 
 graph = build_graph()

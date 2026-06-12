@@ -21,7 +21,7 @@ NEEDS_RETRIEVAL: YES or NO
 """
 
 
-def run_orchestrator(state):
+def orchestrator_agent(state):
     response = invoke(
         prompt=state["query"],
         system_prompt=SYSTEM_PROMPT,
@@ -35,6 +35,6 @@ def run_orchestrator(state):
         if "CATEGORY" in line:
             state["category"] = line.split(":")[1].strip()
         if "NEEDS_RETRIEVAL" in line:
-            state["need_tool"] = "YES" in line.upper()
+            state["need_retrieval"] = "YES" in line.upper()
 
     return state
