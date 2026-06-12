@@ -1,0 +1,56 @@
+{
+  "query": "Washing machine is leaking water and vibrating heavily",
+  "timestamp": "2026-06-12T14:32:10Z",
+
+  "category": "Washing Machine",
+
+  "retrieval": {
+    "docs_retrieved": 4,
+    "sources": [
+      "washing_machine_guide.md",
+      "leakage_troubleshooting.md",
+      "drum_maintenance.md"
+    ]
+  },
+
+  "diagnostic": {
+    "root_cause": "Damaged door seal and drum imbalance",
+    "confidence": 87,
+    "severity": "HIGH"
+  },
+
+  "safety": {
+    "risk_detected": true,
+    "risk_level": "HIGH",
+    "warnings": [
+      "Water + electrical contact risk",
+      "Stop appliance immediately"
+    ],
+    "action": "TURN_OFF_IMMEDIATELY"
+  },
+
+  "tools_used": {
+    "power_supply_check": {
+      "power_status": "OK",
+      "risk": "LOW"
+    },
+    "safety_risk_analyzer": {
+      "risk_detected": true
+    }
+  },
+
+  "latency_seconds": 8.74,
+
+  "execution_path": [
+    "orchestrator",
+    "retrieval",
+    "diagnostic",
+    "safety",
+    "response",
+    "monitoring"
+  ],
+
+  "status": "SUCCESS",
+
+  "error": null
+}
